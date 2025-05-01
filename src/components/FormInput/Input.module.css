@@ -1,0 +1,17 @@
+div{
+    display: flex;
+    flex-direction: column;
+    /* gap: 13px; */
+}
+
+.input{
+    padding-top: 14px;
+    padding-bottom: 14px;
+    border:none;
+    border-bottom: 1px solid #8E8E8E;
+    margin-bottom: 13px;
+}
+
+.input:focus{
+    outline: none;
+}
