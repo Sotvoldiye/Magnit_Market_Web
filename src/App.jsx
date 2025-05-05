@@ -1,13 +1,13 @@
 import React from 'react'
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
-import { Category, Product, ProductList, Login, Register, Home } from './pages'
+import { Category, Product, ProductList, Login, Register, Home, Cart, Account, Favorute } from './pages'
 import MainLayout from './layout/MainLayout'
 import PRotectedRoutes from './components/PRotectedRoutes'
 import { useSelector } from 'react-redux'
 import store from './lib/store'
 
 function App() {
-  const user = useSelector((state) => state.user)
+  const user = true // useSelector((state) => state.user)
   const routes = createBrowserRouter([{
     
       path: "/",
@@ -18,15 +18,24 @@ function App() {
         element: <Home/>
       },
       {
-        path: '/product/:id',
+        path: '/maxsulot/:id',
         element: <Product/>
       },
       {
-        path: '/product_list',
+        path: '/maxsulotlar',
         element: <ProductList/>
       }, 
-      {path: '/product_category',
-        element: <Category/>}
+      {path: '/maxsulot-turi',
+        element: <Category/>},
+        {path: '/savatcha',
+          element: <Cart/>
+        },
+        {path: '/account',
+          element: <Account/>
+        },
+        {path: '/ajratilgn_maxulotlar',
+          element: <Favorute/>
+        }
     ]},
     { path: "/login", element: user ? <Navigate to="/" /> : <Login /> },
     { path: "/register", element: user ? <Navigate to="/" /> : <Register /> },

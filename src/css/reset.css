@@ -1,0 +1,17 @@
+*{
+    font-family: 'Glory';
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+}
+
+    .yellow-star{
+        color: rgb(214, 214, 85);
+    }
+    
+    .star-gray{
+        color:black;
+    }

@@ -2,16 +2,16 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from '../components/Navbar/Navbar'
 import Footer from '../components/Footer/Footer'
-
+import style from './mainLayout.module.css'
 function MainLayout() {
   return (
-    <div>
+    <section className={style.section}>
+        <main className={style.main}> 
         <Navbar/>
-        <main>
             <Outlet/>
         </main>
         <Footer/>
-    </div>
+    </section>
   )
 }
 
