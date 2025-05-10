@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { useGetAllProductsQuery } from "../../../lib/api/productApi";
+import { useGetAllProductsQuery } from "../../lib/api/productApi";
 import style from "./Category.module.css";
 function CategoryList() {
   const { slug } = useParams();
@@ -10,9 +10,7 @@ function CategoryList() {
   if (error) return <p>Error: {error.message}</p>;
 
   const filteredProducts = data.products.filter((p) => p.category === slug);
-  console.log(data);
-  console.log(slug);
-  console.log(filteredProducts);
+
   return (
     <div>
       <h1>{slug.toUpperCase(1)}</h1>

@@ -19,7 +19,7 @@ import MainLayout from "./layout/MainLayout";
 import PRotectedRoutes from "./components/PRotectedRoutes";
 import { useSelector } from "react-redux";
 import store from "./lib/store";
-import CategoryList from "./pages/Home/CategoryList/CategoryList";
+import CategoryList from "./pages/CategoryList/CategoryList";
 import AllComent from "./components/AllComent/AllComent";
 
 function App() {
@@ -46,11 +46,11 @@ function App() {
           element: <ProductList />,
         },
         { path: "/maxsulot-turi", element: <Category /> },
-        { path: '/maxsulot-turi/:slug', element: <CategoryList/> },
+        { path: "/maxsulot-turi/:slug", element: <CategoryList /> },
         { path: "/savatcha", element: <Cart /> },
         { path: "/account", element: <Account /> },
         { path: "/ajratilgn_maxulotlar", element: <Favorute /> },
-        {path: '/comentlar', element:<AllComent/>}
+        { path: "/comentlar", element: <AllComent /> },
       ],
     },
     { path: "/login", element: user ? <Navigate to="/" /> : <Login /> },

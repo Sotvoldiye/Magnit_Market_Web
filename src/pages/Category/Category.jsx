@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import style from './Category.module.css'
 import { useGetAllProductsQuery } from "../../lib/api/productApi";
+import SearchResultList from "../../components/SearchResultList.jsx/SearchREsultLIst";
+import { useState } from "react";
+import Input from "../../components/FormInput/Input";
+import Navbar from "../../components/Navbar/Navbar";
 function Category() {
   const { data, isLoading, error } = useGetAllProductsQuery();
-
-  if (isLoading) return <p>Loading...</p>;
+  const [searchTerm, setSearchTerm]= useState('')
+   if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   // faqat unikal category'lar
@@ -17,6 +21,7 @@ function Category() {
 
   return (
     <div>
+      {/* <Navbar   searchTerm={searchTerm} setSearchTerm={setSearchTerm} filteredData={filteredData} /> */}
       <h3>Maxsulot turlari</h3>
      <ul className={style.categoryList}>
   {uniqueCategories.map((c) => (

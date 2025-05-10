@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/pagination"; // Pagination uchun
-import { Pagination } from "swiper/modules"; // Pagination moduli
 import "./home.css";
 import { useGetAllProductsQuery } from "../../lib/api/productApi";
-import Products from "../Products/Products";
 import style from '../../components/Navbar/Navbar.module.css'
 import Navbar from "../../components/Navbar/Navbar";
 import SearchResultList from "../../components/SearchResultList.jsx/SearchREsultLIst";
@@ -43,53 +38,7 @@ function Home() {
            </div>
                    <Navbar  searchTerm={searchTerm} setSearchTerm={setSearchTerm} filteredData={filteredData} />           
       <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto" }}>
-        {/* <Swiper
-          spaceBetween={30}
-          slidesPerView={1}
-          pagination={{ clickable: true }} // Pastdagi nuqtalar
-          modules={[Pagination]}
-          style={{ width: "100%", height: "114px" }} // Slayd balandligi
-        >
-          <SwiperSlide style={{ width: "100%", height: "114px" }}>
-            <div className="swiperSlideContainer">
-              <img
-                width={"80%"}
-                height={"50%"}
-                src="./images/logo.png"
-                alt=""
-              />
-              <div className="swiperSlideContainer">
-                Magnit tez kunda ishga tushamiz
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="swiperSlideContainer">
-              <img
-                width={"80%"}
-                height={"50%"}
-                src="./images/logo.png"
-                alt=""
-              />
-              <div className="swiperSlideContainer">
-                Magnit tez kunda ishga tushamiz
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="swiperSlideContainer">
-              <img
-                width={"80%"}
-                height={"50%"}
-                src="./images/logo.png"
-                alt=""
-              />
-              <div className="swiperSlideContainer">
-                Magnit tez kunda ishga tushamiz
-              </div>
-            </div>
-          </SwiperSlide>
-        </Swiper> */}
+     
       <SimpleSlider/>
       </div>
       <div>

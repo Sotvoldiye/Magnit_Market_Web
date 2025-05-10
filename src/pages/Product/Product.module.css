@@ -59,10 +59,13 @@
         margin: 0;
         font-size: 17px;
         font-weight: 500;
+        outline: none;
+        border:none;
         background-color: transparent;
     }
 
 }
+
 
 .amount{
     border: 1px solid #E2E2E2;

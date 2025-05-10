@@ -7,20 +7,18 @@ import { NavLink } from "react-router-dom";
 const Accordion = ({ data }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
-  // Bo'limni faollashtirish va yopish
   const toggleSection = (index) => {
-    setActiveIndex(activeIndex === index ? null : index); // Faol bo'limni yopish, boshqa bo'limni ochish
+    setActiveIndex(activeIndex === index ? null : index);
   };
 console.log(data)
   return (
     <div className={styles.accordion}>
-      {/* Asosiy bo'lim */}
       <div className={styles.accordionItem}>
         <button
           className={`${styles.accordionHeader} ${
             activeIndex === 0 ? styles.active : ""
           }`}
-          onClick={() => toggleSection(0)} // 0-indeksli bo'limni ochish
+          onClick={() => toggleSection(0)} 
         >
           {data.title}
           <span className={styles.icon}>
