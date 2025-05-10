@@ -1,0 +1,21 @@
+.slider_item {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+.item_img {
+    display: inline;
+width: 250px;
+margin-left: auto;
+margin-right: auto;
+}
+.item_title {
+margin-left: 20%;
+margin-right: auto;
+}
+
+.slider{
+    background-color:rgb(200, 93, 93);
+    border-radius:5px;
+}

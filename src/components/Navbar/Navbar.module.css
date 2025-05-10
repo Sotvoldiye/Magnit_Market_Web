@@ -3,8 +3,13 @@
     flex-direction: row;
     background-color:#F2F3F2;
     align-items: center;
-    padding: 19px 20px 17px 13px;
     border-radius:12px;
+    margin: 0;
+    padding: 19px 20px 17px 13px;
+    form{
+        padding: 0 !important;
+        margin: 0 !important;
+    }
     input{
         border:none;
         background-color: transparent;
@@ -18,7 +23,7 @@
 
 form{
     padding: 0;
-    padding-top: 30px;
+    /* padding-top: 30px; */
 }
 
 

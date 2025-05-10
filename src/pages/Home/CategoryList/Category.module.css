@@ -1,0 +1,45 @@
+.productList{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.cart {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .yellow_star {
+    color: rgb(214, 214, 85);
+  }
+  
+  .star_gray {
+    color: black;
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all 300ms;
+  }
+  
+  .star {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .productPrice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+      justify-content: space-around;
+      h3{
+          margin-right: auto;
+      }
+    button {
+      border-radius: 17px;
+      color: white;
+      padding: 14px;
+      margin: 0;
+    }
+  }
+  

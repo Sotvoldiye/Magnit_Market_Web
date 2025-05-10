@@ -1,0 +1,100 @@
+.title{
+    padding: 10px;
+    padding-left: 0;
+    padding-right: 0;
+   h3{
+    margin: 0;
+    padding: 0;
+   }
+}
+
+.categoryList {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+    padding: 0;
+    align-items: center;
+    padding: 5px;
+  }
+  
+  .categoryItem {
+    background-color: #ffecec;
+    border-radius:5px;
+    height: 100%;
+
+    h3{
+        padding: 5px;
+        margin: 0;   
+        width: 160px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;    
+    }
+  }
+  
+  .cart {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .yellow_star {
+    color: rgb(214, 214, 85);
+  }
+  
+  .star_gray {
+    color: black;
+  }
+  
+  .image {
+    width: 150px;
+    height: 100%;
+    object-fit: contain;
+    transition: all 300ms;
+  }
+  
+  .star {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .productPrice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+    margin: 0;
+    padding: 5px;
+
+  }
+  
+  .productPrice h4 {
+    margin-right: auto;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .productPrice button {
+    border-radius: 17px;
+    color: white;
+    padding: 14px;
+    margin: 0;
+    border-radius:5px;
+  }
+  
+  .topilmadi{
+    height: 100vh;
+    width: 100%;
+    background-image: url('./images/404bgpage.svg');
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center;
+    .topilmadiBg{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vh;
+    }
+  }

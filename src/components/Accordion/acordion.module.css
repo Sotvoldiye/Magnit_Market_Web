@@ -1,0 +1,90 @@
+.accordion {
+    width: 100%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    /* Bu erda umumiy stilni buzmaslik uchun alohida o'zgartirishlar kiritildi */
+  }
+  
+  .accordionItem {
+    border-bottom: 1px solid #ddd;
+  }
+  
+
+  
+  .icon {
+    font-size: 20px;
+    transition: transform 0.3s ease; 
+  }
+
+  .accordionContent img {
+    width: 100%; 
+    max-width: 300px;
+    height: auto; 
+    transition: transform 0.3s ease-in-out; 
+  }
+  
+  .accordionContent.open img {
+    transform: scale(1.1); 
+  }
+  
+  .accordionContent {
+    max-height: 0; 
+    overflow: hidden; 
+    transition: max-height 0.5s ease-out, padding 0.3s ease-out; 
+    padding: 0 15px; 
+  }
+  
+  .accordionContent.open {
+    max-height: 1000px; 
+    padding: 15px;
+  }
+  
+  .accordionContent p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+
+  .accordionHeader {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    /* position: relative; */
+    color: black;
+  }
+  
+  /* NavLink (komentga link) uchun style */
+  .commentLink {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: underline;
+    margin-left: auto; /* ikonka o'ngda qoladi */
+    transition: color 0.3s ease;
+  }
+  
+  .commentLink:hover {
+    color: #0056b3;
+  }
+  
+  /* Icon uchun */
+  .icon {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 20px;
+  }
+  
+  .allComent{
+    font-size: 13px;
+    text-decoration: none;
+    color: #b8b0b0;
+  }

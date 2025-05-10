@@ -7,7 +7,6 @@ function MainLayout() {
   return (
     <section className={style.section}>
         <main className={style.main}> 
-        <Navbar/>
             <Outlet/>
         </main>
         <Footer/>
