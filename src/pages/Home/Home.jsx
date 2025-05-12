@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./home.css";
 import { useGetAllProductsQuery } from "../../lib/api/productApi";
-import style from '../../components/Navbar/Navbar.module.css'
+import style from "../../components/Navbar/Navbar.module.css";
 import Navbar from "../../components/Navbar/Navbar";
 import SearchResultList from "../../components/SearchResultList.jsx/SearchREsultLIst";
 import SimpleSlider from "../../components/Slider/Slider";
@@ -23,26 +23,30 @@ function Home() {
       </div>
     );
   }
-  const filteredData = data.products.filter(item =>
+  const filteredData = data.products.filter((item) =>
     item.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   console.log(data);
   return (
     <div className="home_container">
-           <div className={style.Navbar}>
-            <img src="/images/logo.png" height={'30px'} width={'150px'} alt="" />
-           <h3>
-              <i className="fa-solid fa-location-dot"></i> Farg'ona
-            </h3>
-           </div>
-                   <Navbar  searchTerm={searchTerm} setSearchTerm={setSearchTerm} filteredData={filteredData} />           
+      <div className={style.Navbar}>
+        <img src="/images/logo.png" height={"30px"} width={"150px"} alt="" />
+        <h3>
+          <i className="fa-solid fa-location-dot"></i> Farg'ona
+        </h3>
+      </div>
+      <Navbar
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        filteredData={filteredData}
+      />
       <div style={{ width: "100%", maxWidth: "1200px", margin: "0 auto" }}>
-     
-      <SimpleSlider/>
+        <SimpleSlider />
       </div>
       <div>
-      <SearchResultList data={data} searchTerm={searchTerm}/>      </div>
+        <SearchResultList data={data} searchTerm={searchTerm} />{" "}
+      </div>
     </div>
   );
 }

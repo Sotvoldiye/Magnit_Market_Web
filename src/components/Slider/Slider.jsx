@@ -13,7 +13,7 @@ function SimpleSlider() {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <Slider className={style.slider} {...settings}>
         <div className={style.slider_item}>
           <img className={style.item_img} src="/images/logo.png" alt="Logo" />

@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const producrApi = createApi({
-  reducerPath: "usersApi",
+  reducerPath: "producrApi", // reducerPath ham imloga mos qoldirildi
   baseQuery: fetchBaseQuery({ baseUrl: "https://dummyjson.com" }),
   endpoints: (builder) => ({
     getAllProducts: builder.query({
@@ -9,8 +9,8 @@ const producrApi = createApi({
     }),
     getProductsById: builder.query({
       query: (id) => `product/${id.replace(":", "")}`,
-    }),
-  }),
+    })
+  })
 });
 
 export const { useGetAllProductsQuery, useGetProductsByIdQuery } = producrApi;

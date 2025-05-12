@@ -2,10 +2,12 @@
   width: 100%;
 }
 
-.swiper {
-  width: 300px;
-  height: 100px;
-}
+
+  .swiper {
+    width: 300px;
+    min-height: 100px;
+  }
+  
 
 .swiper-pagination-bullet {
   width: 5.3px;
