@@ -40,11 +40,11 @@ function ResProduct({ product }) {
       <div className={style.productPrice}>
         <h4>{product.price} so'm</h4>
         {isInCart ? (
-          <button onClick={handleRemove}>
+          <button className={style.button} onClick={handleRemove}>
             <i className="fa-solid fa-minus fa-lg" style={{ color: "#ffffff" }}></i>
           </button>
         ) : (
-          <button onClick={handleAdd}>
+          <button className={style.button} onClick={handleAdd}>
             <i className="fa-solid fa-plus fa-lg" style={{ color: "#ffffff" }}></i>
           </button>
         )}

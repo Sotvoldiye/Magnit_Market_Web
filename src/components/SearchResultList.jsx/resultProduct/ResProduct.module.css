@@ -98,3 +98,12 @@
         width: 100vh;
     }
   }
+
+  .button{
+    margin-top: 36px;
+    padding-top: 18px;
+    padding-bottom: 17px;
+    border-radius:12px;
+    border: none;
+    color: rgb(252, 238, 238);
+    background-color: rgb(228, 83, 83);  }
