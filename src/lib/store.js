@@ -1,19 +1,19 @@
-import { configureStore } from "@reduxjs/toolkit";
-import  producrApi  from "./api/productApi"; // `productApi` default emas, named export bo'lishi kerak
+import { configureStore } from '@reduxjs/toolkit';
 import {
   counterReducer,
   cartReducer,
   userReducer,
-  favoruteReducer
-} from "./slice/userSlice";
+  favoruteReducer,
+} from './slice/Slice';
+import producrApi from './api/productApi';
 
 const store = configureStore({
   reducer: {
-    [producrApi.reducerPath]: producrApi.reducer, // RTK Query reducer
+    [producrApi.reducerPath]: producrApi.reducer,
     counter: counterReducer,
     cart: cartReducer,
     user: userReducer,
-    favorute: favoruteReducer
+    favorute: favoruteReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(producrApi.middleware),

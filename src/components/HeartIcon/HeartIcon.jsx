@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorute, removeFavorute } from '../../lib/slice/Slice';
 
-const HeartIcon = () => {
-  const [isLiked, setIsLiked] = useState(false);
+const HeartIcon = ({ product }) => {
+  const dispatch = useDispatch();
 
-  const toggleLike = () => {
-    setIsLiked(!isLiked);
+  const favoriteItems = useSelector((state) => state.favorute?.items || []);
+
+  const isFavorute = favoriteItems.some((item) => item.id === product.id);
+
+  const toggleFavorute = () => {
+    if (isFavorute) {
+      dispatch(removeFavorute({ id: product.id }));
+    } else {
+      dispatch(addFavorute(product));
+    }
   };
 
   return (
-<i
-  className={` ${isLiked ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}`}
-  onClick={toggleLike}
-  style={{ color: isLiked ? 'rgb(228, 83, 83)' : 'black', cursor: 'pointer' }}
-></i>
-
-
+    <button onClick={toggleFavorute} style={{ background: 'none', border: 'none' }}>
+      <i
+        className={`fa${isFavorute ? 's' : 'r'} fa-heart fa-lg`}
+        style={{ color: isFavorute ? '#e74c3c' : '#ccc', cursor: 'pointer' }}
+      ></i>
+    </button>
   );
 };
 

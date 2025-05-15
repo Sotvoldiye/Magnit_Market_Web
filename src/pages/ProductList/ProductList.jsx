@@ -16,7 +16,6 @@ function ProductList({ product }) {
           ></i>
         </button>
       </div>
-      {/* {product.sort((a, b) => a.stock - b.stock)} */}
     </div>
   );
 }

@@ -1,23 +1,38 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useGetProductsByIdQuery } from '../../lib/api/productApi';
-import { decrement, increment } from '../../lib/slice/userSlice';
-import { useParams } from 'react-router-dom';
-import style from './Cart.module.css'
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  increment,
+  decrement,
+  setStock,
+  resetCounter,
+  removeFromCart,
+} from "../../lib/slice/Slice";
+import style from "./Cart.module.css";
+import Tolov from "../../components/PaynetModal/Tolov";
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.items);
+  const productCounters = useSelector((state) => state.counter.products);
+  const dispatch = useDispatch();
 
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch()
-    
-    console.log(cartItems)
-    useEffect(() => {
-      if (cartItems && cartItems.stock !== undefined) {
-        dispatch(setStock(cartItems.stock));
+  // modal funksiyasi
+  const [tolov, setTolov] = useState(false)
+
+  useEffect(() => {
+    cartItems.forEach((item) => {
+      if (!productCounters[item.id]) {
+        dispatch(setStock({ id: item.id, stock: item.stock }));
       }
-    }, [cartItems, dispatch]);
-    
+    });
+  }, [cartItems, dispatch]);
+
+  // Umumiy narxni hisoblash
+  const totalPrice = cartItems.reduce((sum, item) => {
+    const count = productCounters[item.id]?.count || 0;
+    const jami = item.price * count;
+    return sum + jami;
+  }, 0);
+
   return (
     <div>
       <h2>Savatdagi mahsulotlar</h2>
@@ -26,43 +41,69 @@ function Cart() {
         <p>Savat bo‘sh</p>
       ) : (
         <div>
-          {cartItems.map((item) => (
-            <div key={item.id} style={{ border: '1px solid #ddd', padding: '10px', marginBottom: '10px' }}>
-              {item.thumbnail ? (
+          {cartItems.map((item) => {
+            const count = productCounters[item.id]?.count || 0;
+            const jami = item.price * count;
+            return (
+              <div key={item.id} className={style.cartContainer}>
                 <img
-                  src={item.thumbnail}
+                  src={item.thumbnail || "/no-image.jpg"}
                   alt={item.title}
-                  style={{ width: '100px', height: '100px', objectFit: 'cover' }}
+                  className={style.cartImage}
                 />
-              ) : (
-                <img
-                  src="/path/to/default-image.jpg"  // Placeholder image
-                  alt="No Image"
-                  style={{ width: '100px', height: '100px', objectFit: 'cover' }}
-                />
-              )}
 
-              <h3>{item.title}</h3>
-              <p>Narxi: ${item.price}</p>
-              <p>Miqdori: {item.quantity || 1}</p>
-                      <div>
-                        <div className={style.buttons}>
-                          <button onClick={()=> dispatch(decrement())}>
-                            <i
-                              className="fa-solid fa-minus "
-                              style={{ color: "#b3b3b3" }}
-                            ></i>
-                          </button>
-                          <p className={style.amount}>{count}</p>
-                          <button onClick={()=> dispatch(increment())}>
-                            <i className="fa-solid fa-plus" style={{ color: "#53B175" }}></i>
-                          </button>
-                        </div>
-                      </div>
-            </div>
-          ))}
+                <div className={style.CartCenter}>
+                  <h3>{item.title.split(" ").slice(0, 2).join(" ")}</h3>
+                  <p>Jami: {jami.toFixed(2)} so'm</p>
+
+                  <div className={style.price}>
+                    <div className={style.buttons}>
+                      <button onClick={() => dispatch(decrement(item.id))}>
+                        <i
+                          className="fa-solid fa-minus"
+                          style={{ color: "#b3b3b3" }}
+                        ></i>
+                      </button>
+                      <p className={style.amount}>{count}</p>
+                      <button onClick={() => dispatch(increment(item.id))}>
+                        <i
+                          className="fa-solid fa-plus"
+                          style={{ color: "#53B175" }}
+                        ></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={style.cartCloseCont}>
+                  <button
+                    style={{ marginTop: "0px" }}
+                    onClick={() => {
+                      dispatch(removeFromCart({ id: item.id }));
+                      dispatch(resetCounter(item.id));
+                    }}
+                  >
+                    <i
+                      className="fa-solid fa-xmark fa-lg"
+                      style={{ color: "rgb(108, 105, 105)" }}
+                    ></i>
+                  </button>
+                  <p>{item.price}$</p>
+                </div>
+              </div>
+            );
+          })}
+          <button onClick={()=>setTolov(!tolov)} className={style.sotibOlish}>
+            <p>Sotib Olish</p>{" "}
+            <span className={style.priceSpan}>
+              {totalPrice.toFixed(2)} so'm
+            </span>
+          </button>
         </div>
       )}
+
+      {tolov && <div><Tolov/></div>
+      }
     </div>
   );
 }

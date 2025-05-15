@@ -29,16 +29,19 @@ function Footer() {
         Explore
       </NavLink>
       <NavLink
-  to="/savatcha"
-  className={({ isActive }) =>
-    `${style.navlink} ${isActive ? style.active : ""} indicator tab tab-active`
-  }
->
-<span className="indicator-item badge badge-secondary">{cartItems.length}</span>
-
-  <i className="fa-solid fa-shopping-cart mr-2"></i> {/* Ikonka */}
-  Cart
-</NavLink>
+        to="/savatcha"
+        className={({ isActive }) =>
+          `${style.navlink} ${
+            isActive ? style.active : ""
+          } indicator tab tab-active`
+        }
+      >
+        <span className="indicator-item badge badge-secondary">
+          {cartItems.length}
+        </span>
+        <i className="fa-solid fa-shopping-cart mr-2"></i> {/* Ikonka */}
+        Cart
+      </NavLink>
 
       <NavLink
         className={({ isActive }) =>

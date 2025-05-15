@@ -2,33 +2,44 @@ import { createSlice } from "@reduxjs/toolkit";
 
 /* COUNTER SLICE */
 const counterInitialState = {
-  value: 0,
-  stock: 0,
+  products: {}, // { [productId]: { count: number, stock: number } }
 };
 
 const counterSlice = createSlice({
   name: 'counter',
   initialState: counterInitialState,
   reducers: {
-    increment: (state) => {
-      if (state.value < state.stock) {
-        state.value += 1;
+    increment: (state, action) => {
+      const id = action.payload;
+      const item = state.products[id];
+      if (item && item.count < item.stock) {
+        item.count += 1;
       }
     },
-    decrement: (state) => {
-      if (state.value > 0) {
-        state.value -= 1;
+    decrement: (state, action) => {
+      const id = action.payload;
+      const item = state.products[id];
+      if (item && item.count > 0) {
+        item.count -= 1;
       }
     },
     setStock: (state, action) => {
-      state.stock = action.payload;
-      if (state.value > action.payload) {
-        state.value = action.payload;
+      const { id, stock } = action.payload;
+      if (!state.products[id]) {
+        state.products[id] = { count: 1, stock };
+      } else {
+        state.products[id].stock = stock;
+        if (state.products[id].count > stock) {
+          state.products[id].count = stock;
+        }
       }
     },
-    resetCounter: (state) => {
-      state.value = 0;
-    }
+    resetCounter: (state, action) => {
+      const id = action.payload;
+      if (state.products[id]) {
+        state.products[id].count = 0;
+      }
+    },
   },
 });
 
@@ -53,13 +64,14 @@ const cartSlice = createSlice({
   }
 });
 
-const favaruteInitialState = {
-  items : []
-}
+/* FAVORUTE SLICE */
+const favoruteInitialState = {
+  items: []
+};
 
-const favaruteSlice = createSlice({
-  name: 'cart',
-  initialState: favaruteInitialState,
+const favoruteSlice = createSlice({
+  name: 'favorute',  // To'g'irlandi
+  initialState: favoruteInitialState,
   reducers: {
     addFavorute(state, action) {
       const exists = state.items.find((item) => item.id === action.payload.id);
@@ -96,12 +108,19 @@ const userSlice = createSlice({
 });
 
 /* EXPORT ACTIONS */
-export const { increment, decrement, setStock, resetCounter } = counterSlice.actions;
+export const {
+  increment,
+  decrement,
+  setStock,
+  resetCounter,
+} = counterSlice.actions;
+
 export const { addToCart, removeFromCart } = cartSlice.actions;
 export const { login, logout, isAuthReady } = userSlice.actions;
-export const {addFavorute, removeFavorute } = favaruteSlice.actions
+export const { addFavorute, removeFavorute } = favoruteSlice.actions;
+
 /* EXPORT REDUCERS */
 export const counterReducer = counterSlice.reducer;
 export const cartReducer = cartSlice.reducer;
 export const userReducer = userSlice.reducer;
-export const favoruteReducer = favaruteSlice.reducer
+export const favoruteReducer = favoruteSlice.reducer;

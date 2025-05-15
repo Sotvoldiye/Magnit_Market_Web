@@ -17,7 +17,7 @@ function Category() {
     data.products.filter(
       (item, index, self) =>
         index === self.findIndex((t) => t.category === item.category)
-    );
+    ); 
 
   return (
     <div>
