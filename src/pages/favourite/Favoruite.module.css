@@ -1,0 +1,22 @@
+
+.favoruteItem{
+display: flex;
+flex-direction: row;
+align-items: center;
+gap: 10px;
+}
+
+.favoruteImage{
+    width: 100px;
+    height: 100px;
+}
+
+.price_descript{
+    display: flex;
+    flex-direction: column;
+}
+
+.removeBtn{
+    margin: 0;
+    
+}

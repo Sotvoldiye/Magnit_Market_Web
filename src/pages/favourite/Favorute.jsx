@@ -30,14 +30,17 @@ function Favorute() {
                 alt={item.title}
                 className={style.favoruteImage}
               />
-              <h3>{item.title}</h3>
-              <p>{item.price} so'm</p>
+            <div className={style.price_descript}>
+            <h3>{item.title.split(" ").slice(0, 2).join(" ")}</h3>
+            <p>{item.price} so'm</p>
+            </div>
               <button
                 onClick={() => handleRemoveFromFavorute(item)}
                 className={style.removeBtn}
               >
                 <i className="fa-solid fa-heart-broken"></i> O'chirish
               </button>
+              <button className={style.removeBtn}>+ Savat</button>
             </div>
           ))}
         </div>
