@@ -76,7 +76,8 @@ function Cart() {
                 </div>
 
                 <div className={style.cartCloseCont}>
-                  <button
+                  <button 
+                  className={style.button}
                     style={{ marginTop: "0px" }}
                     onClick={() => {
                       dispatch(removeFromCart({ id: item.id }));
