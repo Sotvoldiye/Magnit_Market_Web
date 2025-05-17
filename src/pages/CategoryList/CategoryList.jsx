@@ -3,7 +3,7 @@ import { Link, NavLink, useParams } from "react-router-dom";
 import { useGetAllProductsQuery, useAddToCartMutation, useRemoveFromCartMutation } from "../../lib/api/productApi";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart as addToCartAction, removeFromCart as removeFromCartAction } from "../../lib/slice/Slice";
-import style from "../../components/SearchResultList.jsx/resultProduct/ResProduct.module.css";
+import style from "./Category.module.css";
 
 function CategoryList() {
   const { slug } = useParams();
@@ -21,7 +21,7 @@ function CategoryList() {
   return (
     <div>
      <div className={style.catergoryListNav}>
-     <NavLink style={{padding:'10px, 15px', backgroundColor:'rgb(228, 83, 83)', borderRadius:'3px'}} to='/maxsulot-turi'>
+     <NavLink style={{padding:'10px', paddingRight:'26px', backgroundColor:'rgb(228, 83, 83)', borderRadius:'3px', width: '30px'}} to='/maxsulot-turi'>
       <i className="fa-solid fa-arrow-left"></i>
       </NavLink>
       <h1>{slug.toUpperCase()}</h1>
