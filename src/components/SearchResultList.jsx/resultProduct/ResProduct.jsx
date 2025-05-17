@@ -16,7 +16,7 @@ function ResProduct({ product }) {
   const handleAdd = async () => {
     try {
       await addToCart(product).unwrap();
-      dispatch(addToCartAction(product));
+      dispatch(addToCartAction(product)); 
     } catch (err) {
       console.error('Add to cart failed', err);
     }

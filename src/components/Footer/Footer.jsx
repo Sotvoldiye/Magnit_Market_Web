@@ -8,7 +8,10 @@ import { useSelector } from "react-redux";
 function Footer() {
   const cartItems = useSelector((state) => state.cart.items);
   console.log(cartItems);
-
+  
+  const favoruteItems = useSelector((state) => state.favorute.items);
+  console.log(favoruteItems);
+  
   return (
     <div className={style.footerCont}>
       <NavLink
@@ -36,22 +39,29 @@ function Footer() {
           } indicator tab tab-active`
         }
       >
-        <span className="indicator-item badge badge-secondary">
+       {cartItems.length > 0 && <span className="indicator-item badge ">
           {cartItems.length}
-        </span>
+        </span>}
         <i className="fa-solid fa-shopping-cart mr-2"></i> {/* Ikonka */}
         Cart
       </NavLink>
 
       <NavLink
+         to="/ajratilgn_maxulotlar"
         className={({ isActive }) =>
-          isActive ? `${style.navlink} ${style.active}` : style.navlink
+          `${style.navlink} ${
+            isActive ? style.active : ""
+          } indicator tab tab-active`
         }
-        to="/ajratilgn_maxulotlar"
       >
-        <FaRegHeart />
-        Favourite
+      {favoruteItems.length > 0 &&  <span className="indicator-item badge ">
+          {favoruteItems.length}
+        </span>}
+        <i className="fa-solid fa-shopping-cart mr-2"></i> {/* Ikonka */}
+        Favoruite
       </NavLink>
+
+
       <NavLink
         className={({ isActive }) =>
           isActive ? `${style.navlink} ${style.active}` : style.navlink
@@ -65,4 +75,5 @@ function Footer() {
   );
 }
 
+//  to="/ajratilgn_maxulotlar"
 export default Footer;

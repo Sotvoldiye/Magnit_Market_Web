@@ -1,0 +1,14 @@
+.modal{
+}
+
+
+.button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;gap: 10px;
+}
+
+.button_button{
+    padding: 5px 15px;
+    border-radius:6px
+}

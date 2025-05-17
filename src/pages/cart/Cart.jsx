@@ -9,6 +9,7 @@ import {
 } from "../../lib/slice/Slice";
 import style from "./Cart.module.css";
 import Tolov from "../../components/PaynetModal/Tolov";
+import { NavLink } from "react-router-dom";
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.items);
@@ -40,17 +41,20 @@ function Cart() {
       {cartItems.length === 0 ? (
         <p>Savat bo‘sh</p>
       ) : (
-        <div>
+        <div className={style.cartContainers}>
+          <div className={style.cartConent}>
           {cartItems.map((item) => {
             const count = productCounters[item.id]?.count || 0;
             const jami = item.price * count;
             return (
               <div key={item.id} className={style.cartContainer}>
+                <NavLink to={`/maxsulot/${item.id}`}>
                 <img
                   src={item.thumbnail || "/no-image.jpg"}
                   alt={item.title}
                   className={style.cartImage}
                 />
+                </NavLink>
 
                 <div className={style.CartCenter}>
                   <h3>{item.title.split(" ").slice(0, 2).join(" ")}</h3>
@@ -100,11 +104,22 @@ function Cart() {
               {totalPrice.toFixed(2)} so'm
             </span>
           </button>
+          </div>
+        
+          <div className={style.modals}>
+          {tolov && (
+  <div className={style.modalOverlay} onClick={() => setTolov(false)}>
+    <div className={style.modalContent} onClick={(e) => e.stopPropagation()}>
+      <Tolov jami={totalPrice}/>
+    </div>
+  </div>
+)}
+
+      </div>
         </div>
       )}
 
-      {tolov && <div><Tolov/></div>
-      }
+
     </div>
   );
 }
