@@ -1,13 +1,10 @@
 import { Link } from "react-router-dom";
 import style from './Category.module.css'
 import { useGetAllProductsQuery } from "../../lib/api/productApi";
-import SearchResultList from "../../components/SearchResultList.jsx/SearchREsultLIst";
 import { useState } from "react";
-import Input from "../../components/FormInput/Input";
-import Navbar from "../../components/Navbar/Navbar";
 function Category() {
+
   const { data, isLoading, error } = useGetAllProductsQuery();
-  const [searchTerm, setSearchTerm]= useState('')
    if (isLoading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 

@@ -24,12 +24,12 @@ justify-content: center;
   }
   
   .categoryItem {
-    background-color: #fcf8f9; /* slate-50 */
-    border: 1px solid #e2e8f0; /* slate-200 */
+    background-color: #fcf8f9; 
+    border: 1px solid #e2e8f0; 
     border-radius: 12px;
-    overflow: hidden;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding-bottom: 6px;
   }
   
   .categoryItem:hover {
@@ -52,7 +52,7 @@ justify-content: center;
   }
   
   .categoryItem span {
-    padding: 12px;
+    padding-left: 13px;
     font-size: 16px;
     font-weight: 500;
   }
