@@ -1,5 +1,16 @@
 .modal{
+    display: flex;
+    flex-direction: column;
 }
+
+   .closeButton{
+    width: auto;
+    padding: 0;
+    margin: 0;
+    margin-left: auto;
+    background-color:transparent;
+    color: black;
+   }
 
 
 .button{
@@ -10,5 +21,14 @@
 
 .button_button{
     padding: 5px 15px;
-    border-radius:6px
+    border-radius:6px;
+    margin-left: auto;
+}
+
+.eslatma{
+
+}
+
+.eslatmaspan{
+    font-weight: 800;
 }

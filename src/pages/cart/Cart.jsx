@@ -10,6 +10,7 @@ import {
 import style from "./Cart.module.css";
 import Tolov from "../../components/PaynetModal/Tolov";
 import { NavLink } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 function Cart() {
   const cartItems = useSelector((state) => state.cart.items);
@@ -33,6 +34,17 @@ function Cart() {
     const jami = item.price * count;
     return sum + jami;
   }, 0);
+
+  useEffect(() => {
+    if (tolov) {
+      toast.success("Eslatma hozir biz faqat Farg'ona tumanida ishlaymiz", {
+        duration: 9000,
+        icon: '⚠',
+        style:{width:'500px', display:'flex', flexDirection:'row'}
+      });
+    }
+  }, [tolov]);
+  
 
   return (
     <div>
@@ -82,7 +94,7 @@ function Cart() {
                 <div className={style.cartCloseCont}>
                   <button 
                   className={style.button}
-                    style={{ marginTop: "0px" }}
+                    style={{ marginTop: "0px", backgroundColor:'transparent' }}
                     onClick={() => {
                       dispatch(removeFromCart({ id: item.id }));
                       dispatch(resetCounter(item.id));
@@ -109,8 +121,9 @@ function Cart() {
           <div className={style.modals}>
           {tolov && (
   <div className={style.modalOverlay} onClick={() => setTolov(false)}>
+    <Toaster/>
     <div className={style.modalContent} onClick={(e) => e.stopPropagation()}>
-      <Tolov jami={totalPrice}/>
+      <Tolov jami={totalPrice} setTolov={setTolov} tolov={tolov}/>
     </div>
   </div>
 )}

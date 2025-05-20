@@ -17,10 +17,10 @@ import {
 } from "./pages";
 import MainLayout from "./layout/MainLayout";
 import PRotectedRoutes from "./components/PRotectedRoutes";
-import { useSelector } from "react-redux";
-import store from "./lib/store";
 import CategoryList from "./pages/CategoryList/CategoryList";
 import AllComent from "./components/AllComent/AllComent";
+import toast, { Toaster } from 'react-hot-toast';
+
 
 function App() {
   const user = true; // useSelector((state) => state.user)
