@@ -1,20 +1,18 @@
 // src/components/SearchResultList.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./Search.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../lib/slice/Slice";
 import ResProduct from "./resultProduct/ResProduct";
+import SplashScreen from "../../components/SplashScreen/SplashScreen";
 
 const SearchResultList = ({ data = [], searchTerm = "" }) => {
   const filteredData = data.products.filter((item) =>
     item.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-
-  // To‘g‘ri nom bilan va fallback (agar state.cart yo‘q bo‘lsa)
-
-
+  
   return (
     <div className={style.title}>
   <h3>Maxsulot turlari</h3>

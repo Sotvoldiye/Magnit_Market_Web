@@ -16,8 +16,10 @@ function SimpleSlider() {
     <div className={style.container}>
       <Slider className={style.slider} {...settings}>
         <div className={style.slider_item}>
-          <img className={style.item_img} src="/images/logo.png" alt="Logo" />
-          <h1 className={style.item_title} >Tez orada ishga tushamiz</h1>
+      <div className={style.sliderLogo}>            
+        <h1 className="logo">Qobiljon market</h1>
+      </div>         
+       <h1 className={style.item_title} >Tez orada ishga tushamiz</h1>
         </div>
         <div><h3>2</h3></div>
         <div><h3>6</h3></div>

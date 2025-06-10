@@ -5,6 +5,10 @@
     /* margin-top: 10px; */
 }
 
+.sliderLogo{
+    margin-left: 90px;
+}
+
 .slider_item {
     display: flex;
     align-items:center;

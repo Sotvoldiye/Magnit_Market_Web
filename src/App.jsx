@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   createBrowserRouter,
   Navigate,
@@ -20,10 +20,13 @@ import PRotectedRoutes from "./components/PRotectedRoutes";
 import CategoryList from "./pages/CategoryList/CategoryList";
 import AllComent from "./components/AllComent/AllComent";
 import toast, { Toaster } from 'react-hot-toast';
-
+import SplashScreen from "./components/SplashScreen/SplashScreen";
 
 function App() {
-  const user = true; // useSelector((state) => state.user)
+  const user = true;
+  const [showSplash, setShowSplash] = useState(false);
+  
+
   const routes = createBrowserRouter([
     {
       path: "/",
@@ -33,18 +36,9 @@ function App() {
         </PRotectedRoutes>
       ),
       children: [
-        {
-          index: true,
-          element: <Home />,
-        },
-        {
-          path: "/maxsulot/:id",
-          element: <Product />,
-        },
-        {
-          path: "/maxsulotlar",
-          element: <ProductList />,
-        },
+        { index: true, element: <Home /> },
+        { path: "/maxsulot/:id", element: <Product /> },
+        { path: "/maxsulotlar", element: <ProductList /> },
         { path: "/maxsulot-turi", element: <Category /> },
         { path: "/maxsulot-turi/:slug", element: <CategoryList /> },
         { path: "/savatcha", element: <Cart /> },
@@ -56,7 +50,36 @@ function App() {
     { path: "/login", element: user ? <Navigate to="/" /> : <Login /> },
     { path: "/register", element: user ? <Navigate to="/" /> : <Register /> },
   ]);
-  return <RouterProvider router={routes} />;
+
+
+  useEffect(() => {
+    const hasSeenSplash = sessionStorage.getItem("hasSeenSplash");
+
+    if (!hasSeenSplash) {
+      setShowSplash(true);
+      sessionStorage.setItem("hasSeenSplash", "true");
+
+      const timer = setTimeout(() => {
+        setShowSplash(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+
+     if (showSplash) {
+      return <SplashScreen />;
+    }
+
+
+  return (
+    <>
+
+        <RouterProvider router={routes} />
+      
+    </>
+  );
 }
 
 export default App;
